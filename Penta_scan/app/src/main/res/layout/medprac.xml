@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ADD8E6"
+    tools:context=".RegistrationFirst"
+    >
+
+    <Button
+        android:id="@+id/first_med"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+
+        android:text="Посох"
+        android:textColor="#000" />
+
+    <Button
+        android:id="@+id/second_med"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/third_med"
+
+
+        android:layout_centerHorizontal="true"
+        android:text="Усиление амулета"
+        android:textColor="#000" />
+
+    <Button
+        android:id="@+id/third_med"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/first_med"
+
+
+        android:layout_centerHorizontal="true"
+        android:text="Тотем"
+        android:textColor="#000" />
+    <Button
+        android:id="@+id/fourth_med"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/second_med"
+
+
+        android:layout_centerHorizontal="true"
+        android:text="Источник личной энергии"
+        android:textColor="#000" />
+    <Button
+        android:id="@+id/fifth_med"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/fourth_med"
+
+
+        android:layout_centerHorizontal="true"
+        android:text="Путь по картам"
+        android:textColor="#000" />
+
+
+</RelativeLayout>

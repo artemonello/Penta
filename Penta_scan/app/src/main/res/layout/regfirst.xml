@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ADD8E6"
+    tools:context=".RegistrationFirst"
+    >
+
+
+
+
+    <android.support.percent.PercentFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+      >
+
+
+
+        <ImageView
+            android:id="@+id/human_sec"
+            app:layout_widthPercent="45%"
+            android:layout_height="252dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="40dp"
+            app:srcCompat="@android:drawable/btn_dialog" />
+        <View
+            android:layout_width="match_parent"
+            android:background="@drawable/circlestat"
+
+            app:layout_marginTopPercent="4%"
+            app:layout_marginRightPercent="45%"
+            app:layout_heightPercent="47%"
+
+            />
+        <TextView
+            android:id="@+id/header1"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="0dp"
+            android:background="#181818"
+            android:gravity="center"
+            android:text="Статистика"
+            android:textColor="#fff"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/name_person"
+            android:layout_width="match_parent"
+            android:layout_marginTop="53dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView5"
+            android:layout_below="@+id/item"
+            android:text="Магический потенциал"
+            android:textSize="13dp"
+            android:gravity="center_horizontal"
+            android:textStyle="bold" />
+        <TableLayout
+            android:layout_width="208dp"
+            app:layout_heightPercent="45%"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/header1"
+            android:layout_marginTop="70dp"
+            app:layout_marginLeftPercent="45%"
+
+            >
+
+            <TableRow android:gravity="center_horizontal"
+                android:paddingTop="10dip"
+                android:paddingBottom="4dip"
+                >
+
+                <TextView
+                    android:id="@+id/item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+
+                    android:layout_alignStart="@+id/item2"
+                    android:layout_below="@+id/header1"
+                    android:background="@drawable/statistic"
+                    android:textSize="10dp"
+                    android:paddingBottom="6dp"
+
+                    android:paddingTop="6dp"
+                    android:textColor="#181818"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <TableRow android:gravity="center_horizontal"
+                android:paddingTop="4dip"
+                android:paddingBottom="4dip"
+                >
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/textView5"
+                    android:layout_below="@+id/item"
+                    android:text="Магический потенциал"
+                    android:textSize="10dp"
+                    android:gravity="center_horizontal"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <TableRow android:gravity="center_horizontal"
+                android:paddingTop="4dip"
+                android:paddingBottom="4dip"
+                >
+
+                <TextView
+                    android:id="@+id/item2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textSize="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+
+                    android:background="@drawable/statistic"
+                    android:paddingBottom="6dp"
+                    android:paddingLeft="18dp"
+                    android:paddingRight="18dp"
+                    android:paddingTop="6dp"
+                    android:textColor="#181818"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <TableRow android:gravity="center_horizontal"
+                android:paddingTop="4dip"
+                android:paddingBottom="4dip"
+                >
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="81dp"
+                    android:textSize="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:gravity="center_horizontal"
+                    android:text="Инструмент"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <TableRow android:gravity="center_horizontal"
+                android:paddingTop="4dip"
+                android:paddingBottom="4dip"
+                >
+
+                <TextView
+                    android:id="@+id/item1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10dp"
+                    android:gravity="center_horizontal"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignStart="@+id/item2"
+
+
+                    android:background="@drawable/statistic"
+                    android:paddingBottom="6dp"
+                    android:paddingLeft="18dp"
+                    android:paddingRight="18dp"
+                    android:paddingTop="6dp"
+                    android:textColor="#181818"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <TableRow android:gravity="center_horizontal"
+                android:paddingTop="4dip"
+                android:paddingBottom="4dip"
+                >
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:textSize="10dp"
+                    android:gravity="center_horizontal"
+                    android:text="Предрасположенность"
+                    android:textStyle="bold" />
+            </TableRow>
+
+        </TableLayout>
+
+
+        <ImageView
+            android:id="@+id/fon_day"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:layout_marginTop="320dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/textView7"
+           />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="260dp"
+            android:background="#181818"
+            android:gravity="center"
+
+            android:text="Рекомендуемое время для практики"
+            android:textColor="#fff"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/part_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="380dp"
+            android:text="Ночь"
+            android:shadowColor="#000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/time_prac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="450dp"
+            android:shadowColor="#000"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="8"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:background="#CC000000"
+            android:visibility="invisible"
+            />
+
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/alerto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="80dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/dialog"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="invisible"
+
+            >
+
+
+            <TextView
+                android:id="@+id/ad_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:text="Выбери свой путь"
+                android:textColor="#000"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/bluetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:text="Заяви о силе"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+
+                />
+
+            <ImageView
+                android:id="@+id/bluepill"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-30dp"
+                android:layout_centerInParent="true"
+
+                app:srcCompat="@drawable/bluepill"/>
+            <TextView
+                android:id="@+id/redtxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:text="Прокачай потенциал"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+
+                />
+
+            <ImageView
+                android:id="@+id/redpill"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                app:srcCompat="@drawable/redpill"
+
+                />
+
+
+        </LinearLayout>
+    </android.support.percent.PercentFrameLayout>
+
+
+
+
+
+</RelativeLayout>
