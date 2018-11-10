@@ -1,2 +1,3 @@
 # Penta
-Huina dlya Maksa
+Huina dlya magov tipa
+
