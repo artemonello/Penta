@@ -96,8 +96,6 @@ public class RegistrationFirst extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.regfirst);
 
-
-
         item1 = (TextView) findViewById(R.id.item1);
         item2 = (TextView) findViewById(R.id.item2);
         item = (TextView) findViewById(R.id.item);
@@ -129,9 +127,6 @@ public class RegistrationFirst extends AppCompatActivity{
 
             }
         }.start();
-
-
-
 
         human_sec.setImageURI(myUri);
       dbHelper = new DBHelper(this);
@@ -176,25 +171,6 @@ public class RegistrationFirst extends AppCompatActivity{
             Log.w("TAG", "-- OOM Error in setting image");
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         String[] s = new String[92];
 
         List<String> pr = new ArrayList<String>();
@@ -206,8 +182,6 @@ public class RegistrationFirst extends AppCompatActivity{
             else{
             s[lo]=p;}
         }
-
-
 
        for(int j=1;j<92;j++){
             if(j<=40){
@@ -343,12 +317,9 @@ for(int k=0;k<2;k++){
 
         }
 
-        //item.setText(pr.get(1));
-       // item1.setText(sss.get(1));
-        //item2.setText(ssss.get(1));
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-       // Log.d(LOG_TAG, "--- Insert in mytable: ---");
+
 
         cv.put("potential", sss.get(1));
         cv.put("disposition", pr.get(1));
@@ -356,16 +327,8 @@ for(int k=0;k<2;k++){
         long rowID = db.insert("mytable", null, cv);
         db.insert("mytable", null, cv);
 
-        //long rowID = db.insert("mytable", null, cv);
-        //Log.d(LOG_TAG, "row inserted, ID = " + rowID);
-
-       // Log.d(LOG_TAG, "--- Rows in mytable: ---");
-        // делаем запрос всех данных из таблицы mytable, получаем Cursor
-
         Cursor cc = db.query("mytable", null, null, null, null, null, null);
 
-        // ставим позицию курсора наc первую строку выборки
-        // если в выборке нет строк, вернется false
         cc.moveToFirst();
         int idColIndex = cc.getColumnIndex("id");
         int potentialColIndex = cc.getColumnIndex("potential");
@@ -423,29 +386,9 @@ for(int k=0;k<2;k++){
           writeFile(chk,RISEH5);
       }
 
-       /* String chk = "";
-        File file = new File(getApplicationContext().getFilesDir(),"potentialpoko.txt");
-        if(file!=null){
-        if(file.exists()){
-            readFilepot(POTEN);
-        }
-        else{
-           writeFile(chk,POTEN);
-        }}*/
-
-
-
-
-
             dbHelper.close();
-
-
-
-
-
-
-
     }
+
     View.OnClickListener OnClickListener1  = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -497,12 +440,10 @@ for(int k=0;k<2;k++){
     }
     void writeFile(String poten,String file) {
         try {
-            // отрываем поток для записи
+
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
                     openFileOutput(file, MODE_PRIVATE)));
-            // пишем данные
             bw.write(poten);
-            // закрываем поток
             bw.close();
 
         } catch (FileNotFoundException e) {
@@ -511,42 +452,14 @@ for(int k=0;k<2;k++){
             e.printStackTrace();
         }
     }
-    /*void readFile(String file) {
 
-
-        try {
-            // открываем поток для чтения
-            BufferedReader brr = new BufferedReader(new InputStreamReader(
-                    openFileInput(file)));
-
-            String  res="";
-
-            String str;
-            str = "";
-            // читаем содержимое
-            while ((str = brr.readLine()) != null) {
-                res = res + str;
-            }
-            if(res.equals("")){ writeFile(pot,POTEN);}
-
-
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
     void readFilepot(String file) {
         String pot = item.getText().toString();
         try {
-            // открываем поток для чтения
             BufferedReader br = new BufferedReader(new InputStreamReader(
                     openFileInput(file)));
             String str = "";
             String  res="";
-
-            // читаем содержимое
             while ((str = br.readLine()) != null) {
                 res = res + str;
             }
@@ -567,8 +480,4 @@ for(int k=0;k<2;k++){
             e.printStackTrace();
         }
     }
-
-
-
-
 }

@@ -13,35 +13,41 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.EditText;
+
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.Calendar;
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 
 public class MainActivity extends AppCompatActivity{
-   //private Timer mTimer;
-    //private MyTimerTask MyTimerTask;
+
    TextView helptxt;
+    TextView alert;
     ImageView penta;
     ImageView backgod;
     ImageView godpick;
     Button pashalka;
     Button check_god;
+    Button tomaterial;
 LinearLayout godent;
     TextInputEditText type_god;
  DBBHelper dbbHelper;
+    final String FILENAME = "time_info";
 //TextView time;
     final String LOG_TAG = "myLogs";
 
@@ -54,10 +60,12 @@ LinearLayout godent;
         godpick = (ImageView) findViewById(R.id.godpick);
         pashalka = (Button) findViewById(R.id.pashalka);
         check_god = (Button) findViewById(R.id.check_god);
+        tomaterial = (Button) findViewById(R.id.tomaterial);
         godent = (LinearLayout) findViewById(R.id.godent);
         type_god = (TextInputEditText) findViewById(R.id.type_god);
         //time = (TextView) findViewById(R.id.time);
         helptxt = (TextView) findViewById(R.id.helptxt);
+        alert = (TextView) findViewById(R.id.alert);
         final Animation a = AnimationUtils.loadAnimation(MainActivity.this,
                 R.anim.rotate);
         a.setDuration(8000);
@@ -66,7 +74,7 @@ LinearLayout godent;
         penta.setOnClickListener(OnClickListener1);
 pashalka.setOnClickListener(OnClickListener2);
         backgod.setOnClickListener(OnClickListener3);
-
+        tomaterial.setOnClickListener(OnClickListener4);
 
         check_god.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -77,11 +85,11 @@ pashalka.setOnClickListener(OnClickListener2);
                  for(int i=0;i<appropriate_vars.length;i++){
                      if(name_god.equals(appropriate_vars[i])){
                          godpick.setImageResource(R.drawable.dich35);
-                         helptxt.setText("Нихуя ты баклажан, молодчик");
+                         helptxt.setText("Твоя наград");
                          break;
                      }
                      else{
-                         helptxt.setText("Ну ты и лох, маслорий, иди покезяй,солнышко :-)");
+                         helptxt.setText("Подумай лучше");
                          break;
                      }
                  }
@@ -110,250 +118,162 @@ backgod.setVisibility(View.VISIBLE);
             ContentValues idd = new ContentValues();
 
             SQLiteDatabase d = dbbHelper.getWritableDatabase();
-           /* if (mTimer != null) {
-                mTimer.cancel();
-            }*/
 
-
-           Calendar calendar = Calendar.getInstance();/*
-
-            int mi;
-            int min;
+           Calendar calendar = Calendar.getInstance();
 
             int curmin = calendar.get(Calendar.MINUTE);
             int hrs = calendar.get(Calendar.HOUR_OF_DAY);
-           int checkint = 1000;
-            Cursor cur = d.rawQuery("SELECT COUNT(*) FROM ttable", null);
-            if (cur != null) {
-                cur.moveToFirst();                       // Always one row returned.
-                if (cur.getInt (0) == 0){               // Zero count means empty table.
-                    idd.put("minute", curmin);
+            String curminwrite = Integer.toString(curmin);
+            String curhourwrite=Integer.toString(hrs);
+            idd.put("minute", curmin);
+            long rowID = d.insert("ttable", null, idd);
+            d.insert("mytable", null, idd);
+            String checker = Long.toString(rowID);
+            int ro = Integer.parseInt(checker);
+            if(ro>1){
+                readFile(FILENAME,curmin,hrs);
 
-                    long rowID = d.insert("ttable", null, idd);
-
-                    //
-                    Cursor cc = d.query("ttable", null, null, null, null, null, null);
-                    cc.moveToLast();
-
-
-                    min = cc.getColumnIndex("minute");
-                    int index = cc.getColumnIndex("id");
-                    int hour = cc.getColumnIndex("hour");
-                    mi = cc.getInt(min);
-                    int hor = cc.getInt(hour);
-                    int id = cc.getInt(index);
-                    cc.close();
-                    String iid = Long.toString(rowID);
-
-                     Intent intent = new Intent(MainActivity.this, AboutActivity.class);
-
-                        startActivity(intent);
-
-                }
-                else if(cur.getInt (0) !=0){
-                    Cursor ccc = d.query("ttable", null, null, null, null, null, null);
-                    ccc.moveToLast();
-                     min = ccc.getColumnIndex("minute");
-                    //int index = ccc.getColumnIndex("id");
-                    //int hour = ccc.getColumnIndex("hour");
-                    mi = ccc.getInt(min);
-                   // int hor = ccc.getInt(hour);
-                    //int id = ccc.getInt(index);
-                    /*ccc.moveToPrevious();
-                    int minprev = ccc.getColumnIndex("minute");
-                    int miprev = ccc.getInt(minprev);*/
-                    //int div =5;
-                    /*if(curmin<mi+2){
-
-                        time.setText("Погодь 2м дядя");
-                    }
-                    else if(curmin>mi+2){
-                        idd.put("minute", curmin);
-                        ccc.moveToLast();
-                        min = ccc.getColumnIndex("minute");
-                        mi = ccc.getInt(min);
-                        time.setText("Го парень");
-                        //Intent intent = new Intent(MainActivity.this, AboutActivity.class);
-
-                        String miii = Integer.toString(mi);
-
-                        time.setText(miii);
-                       // startActivity(intent);
-
-                    }
-                }
-                cur.close();
             }
+            else{
+                writeFile(curhourwrite,curminwrite,FILENAME);
+                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
 
-            dbbHelper.close();*/
+                startActivity(intent);
+            }
+            dbbHelper.close();
 
-
-
-            //int hrs_db;
-            //int minn_db;
-
-
-
-   /* else{
-//if(curmin<mi+2){
-  cc.moveToLast();
-    int minlast = cc.getColumnIndex("minute");
-    int milast = cc.getInt(minlast);
-    cc.moveToPrevious();
-    int minprev = cc.getColumnIndex("minute");
-    int miprev = cc.getInt(minlast);*/
-
-
-
-
-  /*  time.setText("Погодь 2м дядя");
-    calendar.set(Calendar.MINUTE, curmin + 2);
-    calendar.set(Calendar.HOUR_OF_DAY, hrs);
-    mTimer = new Timer();
-    MyTimerTask = new MyTimerTask();
-    mTimer.schedule(MyTimerTask, calendar.getTime());
-    penta.setEnabled(false);*/
-//}else{
-            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
-
-            startActivity(intent);
 }
 
-
-
-      /*  idd.put("hour", hrs);
-        idd.put("minute",curmin+2);
-        d.insert("ttable", null, idd);
-//cc.moveToPrevious();
-       int prevminuteIndex = cc.getColumnIndex("minute");
-        //int prevhourIndex = cc.getColumnIndex("hour");
-       int prevminute = cc.getInt(prevminuteIndex);
-       // int prevhour = cc.getInt(prevhourIndex);
-        cc.moveToLast();
-        int lastminuteIndex = cc.getColumnIndex("minute");
-       // int lasthourIndex = cc.getColumnIndex("hour");
-        int lastminute = cc.getInt(lastminuteIndex);
-        //int lasthour = cc.getInt(lasthourIndex);
-        cc.close();
-       // String lashour = Integer.toString(lasthour);
-       // String prehour = Integer.toString(prevhour);
-        //time.setText(lashour +" "+ prehour);
-            //String mi_db = Integer.toString(minn_db);
-            // time.setText(mi_db);
-
-        /*if(prevhour==1000){
-            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+    };
+    View.OnClickListener OnClickListener4  = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(MainActivity.this, Practise.class);
 
             startActivity(intent);
-        }*/
-
-       // int hourColIndex = cc.getColumnIndex("hour");
-        //int minColIndex = cc.getColumnIndex("minute");
-
-
-/*if(curmin<(lastminute+2)) {
-    hrs_db = cc.getInt(hourColIndex);
-    minn_db = cc.getInt(minColIndex);
-    calendar.set(Calendar.MINUTE, minn_db);
-    calendar.set(Calendar.HOUR_OF_DAY, hrs_db);
-    cc.close();
-    calendar.set(Calendar.MINUTE, minn_db + 2);
-    calendar.set(Calendar.HOUR_OF_DAY, hrs);
-//if(curmin<minn_db)
-    mTimer = new Timer();
-    MyTimerTask = new MyTimerTask();
-    mTimer.schedule(MyTimerTask, calendar.getTime());
-}*/
-
-
-   // }//}
-          //  if(curmin>minn_db){}
-
-    /*else{
-            ContentValues cvv = new ContentValues();
-
-
-                            //Database
-
-            cvv.put("hour", hrs);
-            cvv.put("minute",curmin);
-            d.insert("ttable", null, cvv);
-
-           Cursor c = d.query("ttable", null, null, null, null, null, null);
-
-
-
-            c.moveToFirst();
-
-                int hourColIndex = c.getColumnIndex("hour");
-                int minColIndex = c.getColumnIndex("minute");
-
-
-               // String hrdb = c.getString(hourColIndex);
-                //String min_db = c.getString(minColIndex);
-                int hrs_db = c.getInt(hourColIndex);
-                int minn_db = c.getInt(minColIndex);
-                calendar.set(Calendar.MINUTE,minn_db);
-                calendar.set(Calendar.HOUR_OF_DAY,hrs_db);
-                c.close();
-                calendar.set(Calendar.MINUTE,minn_db + 2);
-                calendar.set(Calendar.HOUR_OF_DAY,hrs);
-
-
-//String mi_db = Integer.toString(minn_db);
-   // time.setText(mi_db);
-}*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //mTimer.schedule(MyTimerTask, calendar.getTime());
-
-
-
-
-
-
-
+        }
     };
 
+  void writeFile(String hour,String min,String file) {
+      try {
+
+          BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
+                  openFileOutput(file, MODE_PRIVATE)));
+          bw.write(hour+":"+min);
+          bw.close();
+
+      } catch (FileNotFoundException e) {
+          e.printStackTrace();
+      } catch (IOException e) {
+          e.printStackTrace();
+      }
+  }
+  void readFile(String file,int min,int h) {
+
+      try {
+          BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput(file)));
+          String str = "";
+          String  res="";
+          while ((str = br.readLine()) != null) {
+              res = res + str;
+          }
+          String[] subStr;
+          subStr = res.split(":");
+          int min_prev = Integer.parseInt(subStr[1]);
+          int h_prev = Integer.parseInt(subStr[0]);
+          int mindiv = min - min_prev;
 
 
+       if(min_prev==55){
+              if(h>h_prev){
+                  String mincur = Integer.toString(min);
+                  String hcur = Integer.toString(h);
+                  writeFile(hcur,mincur,FILENAME);
+                  Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+
+                  startActivity(intent);
+              }
+              else{
+                  tomaterial.setVisibility(View.VISIBLE);
+                  alert.setVisibility(View.VISIBLE);
+              }
+          }
+          else if(min_prev==56){
+              if(h>h_prev&&min>=1){
+                  String mincur = Integer.toString(min);
+                  String hcur = Integer.toString(h);
+                  writeFile(hcur,mincur,FILENAME);
+                  Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+
+                  startActivity(intent);
+              }
+              else{
+                  tomaterial.setVisibility(View.VISIBLE);
+                  alert.setVisibility(View.VISIBLE);
+              }
+          }
+          else if(min_prev==57){
+              if(h>h_prev&&min>=2){
+                  helptxt.setText("huinie");
+                  String mincur = Integer.toString(min);
+                  String hcur = Integer.toString(h);
+                  writeFile(hcur,mincur,FILENAME);
+                  Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+
+                  startActivity(intent);
+              }
+              else{
+                  tomaterial.setVisibility(View.VISIBLE);
+                  alert.setVisibility(View.VISIBLE);
+              }
+          }
+          else if(min_prev==58){
+              if(h>h_prev&&min>=3){
+                  String mincur = Integer.toString(min);
+                  String hcur = Integer.toString(h);
+                  writeFile(hcur,mincur,FILENAME);
+                  Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+
+                  startActivity(intent);
+              }
+              else{
+                  tomaterial.setVisibility(View.VISIBLE);
+                  alert.setVisibility(View.VISIBLE);
+              }
+          }
+          else if(min_prev==59){
+              if(h>h_prev&&min>=4){
+                  String mincur = Integer.toString(min);
+                  String hcur = Integer.toString(h);
+                  writeFile(hcur,mincur,FILENAME);
+                  Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                  startActivity(intent);
+              }
+              else{
+                  tomaterial.setVisibility(View.VISIBLE);
+                  alert.setVisibility(View.VISIBLE);
+              }
+          }
+          else if(mindiv<5){
+           tomaterial.setVisibility(View.VISIBLE);
+alert.setVisibility(View.VISIBLE);
+          }
+          else{
+              String mincur = Integer.toString(min);
+              String hcur = Integer.toString(h);
+writeFile(hcur,mincur,FILENAME);
+              Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+
+              startActivity(intent);
+          }
 
 
-  /* class MyTimerTask extends TimerTask {
-
-        @Override
-        public void run() {
-
-
-
-            runOnUiThread(new Runnable() {
-
-                @Override
-                public void run() {
-
-                   // penta.setEnabled(true);
-                    penta.setEnabled(true);
-                    time.setText("Можешь сканить");
-                    //Intent intent = new Intent(MainActivity.this, AboutActivity.class);
-
-                    //startActivity(intent);
-
-                }
-            });
-        }
-    }*/
-
+      } catch (FileNotFoundException e) {
+          e.printStackTrace();
+      } catch (IOException e) {
+          e.printStackTrace();
+      }
+  }
     class DBBHelper extends SQLiteOpenHelper {
 
         public DBBHelper(Context context) {
