@@ -1,3 +1,3 @@
 # Penta
-Huina dlya magov tipa
+Some stuff for broken souls
 
