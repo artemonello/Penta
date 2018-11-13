@@ -21,7 +21,6 @@ public class PracText extends AppCompatActivity {
     TextView prac_text;
     ImageView prac_im;
     ImageView backpot;
-    ImageView crosspot;
     ImageView potimg;
     Button rise_easy;
     Button rise_med;
@@ -52,7 +51,7 @@ public class PracText extends AppCompatActivity {
         prac_im = (ImageView) findViewById(R.id.prac_im);
         potimg = (ImageView) findViewById(R.id.potimg);
         backpot = (ImageView) findViewById(R.id.backpot);
-        crosspot = (ImageView) findViewById(R.id.crosspot);
+
         rise_easy = (Button) findViewById(R.id.rise_esay);
         rise_med = (Button) findViewById(R.id.rise_med);
         rise_high = (Button) findViewById(R.id.rise_high);
@@ -66,6 +65,7 @@ public class PracText extends AppCompatActivity {
                                              public void onClick(View v) {
                                                  potimg.setImageResource(R.drawable.fdich);
                                                  imgpot.setVisibility(View.VISIBLE);
+                                                 backpot.setVisibility(View.VISIBLE);
                                                  read_and_writeFile(POTEN);
                                              }});
 
@@ -251,22 +251,15 @@ prac_text.setText(R.string.f_prac_fl);
         }
 
 
-        crosspot.setOnClickListener(OnClickListener);
+
         backpot.setOnClickListener(OnClickListener1);
     }
 
-    View.OnClickListener OnClickListener  = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
 
-            imgpot.setVisibility(View.INVISIBLE);
-            backpot.setVisibility(View.INVISIBLE);
-        }
-    };
     View.OnClickListener OnClickListener1  = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-
+            backpot.setVisibility(View.INVISIBLE);
             imgpot.setVisibility(View.INVISIBLE);
         }
     };

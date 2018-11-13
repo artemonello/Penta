@@ -13,7 +13,6 @@
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-
         android:text="Бег на месте"
         android:textColor="#000" />
 
@@ -21,10 +20,7 @@
         android:id="@+id/second_easy"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
-
         android:layout_below="@+id/third_easy"
-
-
         android:layout_centerHorizontal="true"
         android:text="Медитация внутренняя улыбка"
         android:textColor="#000" />
@@ -33,10 +29,7 @@
         android:id="@+id/third_easy"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
-
         android:layout_below="@+id/first_easy"
-
-
         android:layout_centerHorizontal="true"
         android:text="пасьянс Медичи"
         android:textColor="#000" />
@@ -44,10 +37,7 @@
         android:id="@+id/fourth_easy"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
-
         android:layout_below="@+id/second_easy"
-
-
         android:layout_centerHorizontal="true"
         android:text="Крылья"
         android:textColor="#000" />
@@ -55,13 +45,8 @@
         android:id="@+id/fifth_easy"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
-
         android:layout_below="@+id/fourth_easy"
-
-
         android:layout_centerHorizontal="true"
         android:text="Копилочка"
         android:textColor="#000" />
-
-
 </RelativeLayout>

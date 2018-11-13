@@ -26,9 +26,6 @@ public class HardPrac extends AppCompatActivity {
         third_hard.setOnClickListener(OnClickListener3);
         fourth_hard.setOnClickListener(OnClickListener4);
         fifth_hard.setOnClickListener(OnClickListener5);
-
-
-
     }
     View.OnClickListener OnClickListener1  = new View.OnClickListener() {
         @Override

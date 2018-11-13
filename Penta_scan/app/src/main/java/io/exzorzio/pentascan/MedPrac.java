@@ -26,9 +26,6 @@ public class MedPrac extends AppCompatActivity {
         third_med.setOnClickListener(OnClickListener3);
         fourth_med.setOnClickListener(OnClickListener4);
         fifth_med.setOnClickListener(OnClickListener5);
-
-
-
     }
     View.OnClickListener OnClickListener1  = new View.OnClickListener() {
         @Override

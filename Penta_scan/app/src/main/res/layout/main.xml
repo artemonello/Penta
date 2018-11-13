@@ -14,20 +14,8 @@
         android:layout_alignParentStart="true"
         >
 
-        <Button
-            android:id="@+id/pashalka"
-            android:layout_width="25dp"
-            android:layout_height="23dp"
-
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="0dp"
-            android:background="@drawable/butpash"
-            android:text="?" />
         <TextView
             android:id="@+id/app_name"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -37,7 +25,9 @@
             android:text="@string/app_title"
             android:textColor="#000"
             android:textSize="45sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+
+            />
 
 
         <TextView
@@ -61,7 +51,8 @@
             android:layout_marginBottom="-220dp"
             android:background="@drawable/mybutton"
             android:text="Перейти к практикам"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            />
 
         <ImageView
             android:id="@+id/penta"
@@ -74,99 +65,11 @@
             android:contentDescription="@string/image_title"
             android:gravity="center"
             app:srcCompat="@drawable/gtyns"
-            tools:ignore="ContentDescription" />
-        <ImageView
-            android:id="@+id/backgod"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:background="#CC000000"
-            android:visibility="invisible"
-            />
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/godent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="50dp"
-            android:layout_marginRight="50dp"
-            android:background="@drawable/dialog"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:visibility="invisible"
-
-            >
-
-
-            <ImageView
-                android:id="@+id/godpick"
-                android:layout_width="wrap_content"
-                android:layout_height="240dp"
-                app:srcCompat="@drawable/dich36" />
-            <TextView
-                android:id="@+id/helptxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/godpick"
-                android:layout_marginTop="25dp"
-                android:gravity="center_horizontal"
-                android:text="&quot;назови меня и я дарую тебе победу, куда бы ты не взял меня с собой.&quot;"
-                android:textColor="#000"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-
+            tools:ignore="ContentDescription"
 
             />
-
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/textInputLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-              >
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/type_god"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-            </android.support.design.widget.TextInputLayout>
-
-            <Button
-                android:id="@+id/check_god"
-                android:layout_width="200dp"
-                android:layout_height="40dp"
-
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="0dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/mybutton"
-                android:text="Проверь себя"/>
-
-        </LinearLayout>
-
 
 
     </FrameLayout>
-
-
-    <!--<TextView
-        android:id="@+id/time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="97dp"
-        android:text="TextView" />-->
-
 
 </RelativeLayout>

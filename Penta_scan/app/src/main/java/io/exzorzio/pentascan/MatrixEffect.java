@@ -21,8 +21,8 @@ public class MatrixEffect extends View {
     private char[] cars = "+-*/!^'([])#@&?,=$€°|%".toCharArray();
     private int[] txtPosByColumn;
     private Paint paintTxt, paintBg, paintBgBmp, paintInitBg;
-
     public MatrixEffect(Context context, AttributeSet attrs) {
+
         super(context, attrs);
         paintTxt = new Paint();
         paintTxt.setStyle(Paint.Style.FILL);
@@ -32,10 +32,8 @@ public class MatrixEffect extends View {
         paintBg.setColor(Color.BLACK);
         paintBg.setAlpha(5);
         paintBg.setStyle(Paint.Style.FILL);
-
         paintBgBmp = new Paint();
         paintBgBmp.setColor(Color.BLACK);
-
         paintInitBg = new Paint();
         paintInitBg.setColor(Color.BLACK);
         paintInitBg.setAlpha(255);
@@ -59,7 +57,6 @@ public class MatrixEffect extends View {
             txtPosByColumn[x] = RANDOM.nextInt(height / 2) + 1;
         }
     }
-
     private void drawText() {
         for (int i = 0; i < txtPosByColumn.length; i++) {
             canvas.drawText("" + cars[RANDOM.nextInt(cars.length)], i * fontSize, txtPosByColumn[i] * fontSize, paintTxt);
@@ -71,7 +68,6 @@ public class MatrixEffect extends View {
             txtPosByColumn[i]++;
         }
     }
-
     private void drawCanvas() {
         canvas.drawRect(0, 0, width, height, paintBg);
         drawText();

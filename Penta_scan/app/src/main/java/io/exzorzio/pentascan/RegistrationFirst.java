@@ -1,36 +1,23 @@
 package io.exzorzio.pentascan;
-import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.v4.content.FileProvider;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
@@ -40,18 +27,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import android.database.Cursor;
-
 
 public class RegistrationFirst extends AppCompatActivity{
    TextView item1;
@@ -66,10 +45,7 @@ public class RegistrationFirst extends AppCompatActivity{
     ImageView redpill;
     ImageView bluepill;
     ImageView back;
-    ImageView backbottom;
-    ImageView backtop;
     TextView name_person;
-    ImageView backright;
     LinearLayout alerto;
     final String FILENAME = "file";
     final String FILENAMEFRIEND = "file_friend";
@@ -127,20 +103,17 @@ public class RegistrationFirst extends AppCompatActivity{
 
             }
         }.start();
-
         human_sec.setImageURI(myUri);
       dbHelper = new DBHelper(this);
         redpill.setOnClickListener(OnClickListener1);
         bluepill.setOnClickListener(OnClickListener3);
         back.setOnClickListener(OnClickListener2);
-
         try {
             File f = new File(path);
             ExifInterface exif = new ExifInterface(f.getPath());
             int orientation = exif.getAttributeInt(
                     ExifInterface.TAG_ORIENTATION,
                     ExifInterface.ORIENTATION_NORMAL);
-
             int angle = 0;
 
             if (orientation == ExifInterface.ORIENTATION_ROTATE_90) {
@@ -155,7 +128,6 @@ public class RegistrationFirst extends AppCompatActivity{
             mat.postRotate(angle);
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inSampleSize = 2;
-
             Bitmap bmp = BitmapFactory.decodeStream(new FileInputStream(f),
                     null, options);
             Bitmap bitmap = Bitmap.createBitmap(bmp, 0, 0, bmp.getWidth(),
@@ -253,7 +225,6 @@ for(int k=0;k<2;k++){
         if(hour>=0&&hour<=4||hour==23){
             part_day.setText("Ночь");
             fon_day.setBackgroundResource(R.drawable.night);
-
         }
         if(hour>4&&hour<=12){
             part_day.setText("Утро");
@@ -269,14 +240,11 @@ for(int k=0;k<2;k++){
         }
 
 
-
-
         for(int i=0;i<26;i++){
             if(i==0||i==1||i>=5&&i<=11||i==13||i>=15&&i<=23||i==25){
                 for(int j=0;j<5;j++){
                 sss.add(ss[i]);
                 }
-
             }
             if(i==14){
                 for(int j=0;j<4;j++){
@@ -290,7 +258,6 @@ for(int k=0;k<2;k++){
 
             if(i==4||i==12||i==17) {
                     sss.add(ss[i]);
-
             }
             if(i==3){
                 for(int j=0;j<7;j++){
@@ -463,7 +430,6 @@ for(int k=0;k<2;k++){
             while ((str = br.readLine()) != null) {
                 res = res + str;
             }
-
             if(file.equals("potentialpoko")){
 
                 if(res.equals("")){ writeFile(pot,POTEN);
