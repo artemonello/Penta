@@ -94,16 +94,16 @@ public class AboutActivity extends AppCompatActivity {
         name_lay.setVisibility(View.VISIBLE);
         pashalka.setOnClickListener(OnClickListener6);
         backgod.setOnClickListener(OnClickListener5);
-       check_god.setOnClickListener(new View.OnClickListener() {
+        check_god.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-               String name_god = type_god.getText().toString();
+                String name_god = type_god.getText().toString();
                 String appropriate_vars[] ={"Odin","Odinn","odin","odinn","Один","Одинн","один","одинн"};
                 if(name_god.equals(appropriate_vars[0])||name_god.equals(appropriate_vars[1])||
                         name_god.equals(appropriate_vars[2])||name_god.equals(appropriate_vars[3])
                         ||name_god.equals(appropriate_vars[4])||name_god.equals(appropriate_vars[5])
                         ||name_god.equals(appropriate_vars[6])||name_god.equals(appropriate_vars[7])){
-                   godpick.setImageResource(R.drawable.dich35);
+                    godpick.setImageResource(R.drawable.dich35);
                     helptxt.setText("Твоя награда");
 
                 }
@@ -112,8 +112,8 @@ public class AboutActivity extends AppCompatActivity {
                 }
 
             }});
-final String result ="";
-       readFile(result);
+        final String result ="";
+        readFile(result);
 
         name_subm.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -406,13 +406,13 @@ final String result ="";
             BufferedReader br = new BufferedReader(new InputStreamReader(
                     openFileInput(FILENAME)));
             String str = "";
-           res="";
+            res="";
             List<String> welcome_arr= Arrays.asList("Тьма ждёт тебя, ","Я взываю к тебе, ","Я соскучился, ","","Кто воплощение магии? - ","Сансара ждёт тебя, ","А твой потенциал хорош, ");
             Collections.shuffle(welcome_arr);
             String welcoming = welcome_arr.get(1);
             // читаем содержимое
             while ((str = br.readLine()) != null) {
-              res = res + str;
+                res = res + str;
                 if (!res.equals("")) {
                     name_lay.setVisibility(View.INVISIBLE);
                 }

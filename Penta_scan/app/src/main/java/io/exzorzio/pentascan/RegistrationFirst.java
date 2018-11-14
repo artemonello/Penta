@@ -13,7 +13,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -39,7 +38,6 @@ public class RegistrationFirst extends AppCompatActivity{
     TextView time_prac;
     TextView part_day;
     ImageView fon_day;
-    final String LOG_TAG = "myLogs";
     DBHelper dbHelper;
     ImageView human_sec;
     ImageView redpill;
@@ -138,9 +136,7 @@ public class RegistrationFirst extends AppCompatActivity{
             human_sec.setImageBitmap(bitmap);
 
         } catch (IOException e) {
-            Log.w("TAG", "-- Error in setting image");
         } catch (OutOfMemoryError oom) {
-            Log.w("TAG", "-- OOM Error in setting image");
         }
 
         String[] s = new String[92];
@@ -287,7 +283,6 @@ for(int k=0;k<2;k++){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-
         cv.put("potential", sss.get(1));
         cv.put("disposition", pr.get(1));
         cv.put("tool", ssss.get(1));
@@ -297,7 +292,6 @@ for(int k=0;k<2;k++){
         Cursor cc = db.query("mytable", null, null, null, null, null, null);
 
         cc.moveToFirst();
-        int idColIndex = cc.getColumnIndex("id");
         int potentialColIndex = cc.getColumnIndex("potential");
         int dispositionColIndex = cc.getColumnIndex("disposition");
         int toolColIndex = cc.getColumnIndex("tool");
@@ -387,13 +381,10 @@ for(int k=0;k<2;k++){
 
     class DBHelper extends SQLiteOpenHelper {
         public DBHelper(Context context) {
-            // конструктор суперкласса
             super(context, "myDB", null, 1);
         }
         @Override
         public void onCreate(SQLiteDatabase db) {
-            Log.d(LOG_TAG, "--- onCreate database ---");
-            // создаем таблицу с полями
             db.execSQL("create table mytable ("
                     + "id integer primary key autoincrement,"
                     + "potential text,"
